@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>BayMax&#39;s Blog</title>
+  
+  <subtitle>个人博客，记录美好生活</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://error-codes.github.io/"/>
+  <updated>2020-01-16T15:37:40.975Z</updated>
+  <id>http://error-codes.github.io/</id>
+  
+  <author>
+    <name>BayMax</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Markdown 教程</title>
+    <link href="http://error-codes.github.io/2020/01/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/"/>
+    <id>http://error-codes.github.io/2020/01/16/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</id>
+    <published>2020-01-16T13:56:00.000Z</published>
+    <updated>2020-01-16T15:37:40.975Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Markdown-标题"><a href="#Markdown-标题" class="headerlink" title="Markdown 标题"></a>Markdown 标题</h1><hr><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="# 一级标题"></a><code># 一级标题</code></h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="## 二级标题"></a><code>## 二级标题</code></h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="### 三级标题"></a><code>### 三级标题</code></h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="#### 四级标题"></a><code>#### 四级标题</code></h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="##### 五级标题"></a><code>##### 五级标题</code></h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="###### 六级标题"></a><code>###### 六级标题</code></h6><hr><h1 id="Markdown-段落"><a href="#Markdown-段落" class="headerlink" title="Markdown 段落"></a>Markdown 段落</h1><hr><p>段落编写完成后，<br>在末尾增加两个以上的 <code>space空格</code> 然后 <code>enter</code>。</p><p>段落编写完成后，</p><p>也可在编写的末尾增加一行空行，进行划分段落。</p><hr><h1 id="Markdown-字体"><a href="#Markdown-字体" class="headerlink" title="Markdown 字体"></a>Markdown 字体</h1><hr><p><em>斜体文本</em>  <code>*斜体文本*</code></p><p><em>斜体文本</em>  <code>_斜体文本_</code></p><p><strong>粗体文本</strong>  <code>**粗体文本**</code></p><p><strong>粗体文本</strong>  <code>__粗体文本__</code></p><p><strong><em>粗斜体文本</em></strong>  <code>***粗斜体文本***</code></p><p><strong><em>粗斜体文本</em></strong>   <code>___粗斜体文本___</code></p><hr><h1 id="Markdown-分隔线"><a href="#Markdown-分隔线" class="headerlink" title="Markdown 分隔线"></a>Markdown 分隔线</h1><hr><p>三个及以上的<code>*</code>，<code>-</code>，或者三个以上的<code>_</code>。</p><hr><p><code>* * *</code>  </p><hr><p><code>- - -</code></p><hr><p><code>_ _ _</code></p><hr><p>但是行内不能添加东西，可以在<code>*</code>，<code>-</code>，或者<code>_</code>中间添加<code>space空格</code>。</p><hr><h1 id="Markdown-删除线"><a href="#Markdown-删除线" class="headerlink" title="Markdown 删除线"></a>Markdown 删除线</h1><hr><p>如果段落上的文字要添加删除线，只需要在文字的两端加上<code>~~</code> <del>两个波浪线</del> 即可</p><hr><h1 id="Markdown-下划线"><a href="#Markdown-下划线" class="headerlink" title="Markdown 下划线"></a>Markdown 下划线</h1><hr><p>利用HTML的 <code>&lt;u&gt;</code> 标签</p><p><u>带下划线文本</u></p><hr><h1 id="Markdown-脚注"><a href="#Markdown-脚注" class="headerlink" title="Markdown 脚注"></a>Markdown 脚注</h1><hr><p>Markdown 脚注的格式如下:</p><p><code>[^要注明的文本]</code></p><p>[^要注明的文本]    </p><hr><h1 id="Markdown-列表"><a href="#Markdown-列表" class="headerlink" title="Markdown 列表"></a>Markdown 列表</h1><hr><p>Markdown 支持有序列表和无序列表。</p><p>无序列表使用星号(*)、加号(+)或是减号(-)作为列表标记：  </p><p><code>* 第一项</code><br><code>* 第二项</code><br><code>* 第三项</code></p><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><p><code>+ 第一项</code><br><code>+ 第二项</code><br><code>+ 第三项</code></p><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><p><code>- 第一项</code><br><code>- 第二项</code><br><code>- 第三项</code></p><ul><li>第一项</li><li>第二项</li><li>第三项</li></ul><p>有序列表使用数字并加上 <code>.</code> 号来表示:</p><p><code>1. 第一项</code><br><code>2. 第二项</code><br><code>3. 第三项</code></p><ol><li>第一项</li><li>第二项</li><li>第三项</li></ol><hr><h1 id="Markdown-列表嵌套"><a href="#Markdown-列表嵌套" class="headerlink" title="Markdown 列表嵌套"></a>Markdown 列表嵌套</h1><hr><p>列表嵌套</p><p>列表嵌套只需在子列表中的选项添加四个空格即可：</p><ol><li>第一项：<ul><li>第一项嵌套的第一个元素</li><li>第一项嵌套的第二个元素</li></ul></li><li>第二项：<ul><li>第二项嵌套的第一个元素</li><li>第二项嵌套的第二个元素</li></ul></li><li>第三项<ul><li>第三项嵌套的第一个元素</li><li>第三项嵌套的第二个元素</li></ul></li></ol><hr><h1 id="Markdown-区块"><a href="#Markdown-区块" class="headerlink" title="Markdown 区块"></a>Markdown 区块</h1><hr><p>Markdown 区块引用是在段落开头使用 <code>&gt;</code> 符号 ，然后后面紧跟一个 <code>space空格</code> 符号：</p><blockquote><p>区块引用<br>示例教程<br>区块嵌套</p></blockquote><p>另外区块是可以嵌套的，一个 <code>&gt;</code> 符号是最外层，两个 <code>&gt;</code> 符号是第一层嵌套，以此类推：</p><blockquote><p>最外层</p><blockquote><p>第一层嵌套</p><blockquote><p>第二层嵌套</p></blockquote></blockquote></blockquote><hr><h1 id="Markdown-列表中使用区块"><a href="#Markdown-列表中使用区块" class="headerlink" title="Markdown 列表中使用区块"></a>Markdown 列表中使用区块</h1><hr><p>如果要在列表项目内放进区块，那么就需要在 <code>&gt;</code> 前添加四个<code>space空格</code>的缩进。</p><p>区块中使用列表实例如下：</p><ul><li>第一项<blockquote><p>菜鸟教程<br>学的不仅是技术更是梦想</p></blockquote></li><li>第二项</li></ul><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Markdown-标题&quot;&gt;&lt;a href=&quot;#Markdown-标题&quot; class=&quot;headerlink&quot; title=&quot;Markdown 标题&quot;&gt;&lt;/a&gt;Markdown 标题&lt;/h1&gt;&lt;hr&gt;
+&lt;h1 id=&quot;一级标题&quot;&gt;&lt;a href=&quot;#一级标题&quot; cl
+      
+    
+    </summary>
+    
+    
+      <category term="基础" scheme="http://error-codes.github.io/categories/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="编辑" scheme="http://error-codes.github.io/tags/%E7%BC%96%E8%BE%91/"/>
+    
+      <category term="示例教学" scheme="http://error-codes.github.io/tags/%E7%A4%BA%E4%BE%8B%E6%95%99%E5%AD%A6/"/>
+    
+  </entry>
+  
+</feed>
