@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://error-codes.github.io/"/>
-  <updated>2020-01-16T15:37:40.975Z</updated>
+  <updated>2020-01-17T10:04:25.673Z</updated>
   <id>https://error-codes.github.io/</id>
   
   <author>
@@ -15,6 +15,42 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构与算法分析——数学篇</title>
+    <link href="https://error-codes.github.io/[object%20Object]/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/"/>
+    <id>https://error-codes.github.io/[object%20Object]/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E5%88%86%E6%9E%90/</id>
+    <published>2020-01-17T09:52:00.000Z</published>
+    <updated>2020-01-17T10:04:25.673Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h1><hr><p>指数</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;指数&quot;&gt;&lt;a href=&quot;#指数&quot; class=&quot;headerlink&quot; title=&quot;指数&quot;&gt;&lt;/a&gt;指数&lt;/h1&gt;&lt;hr&gt;
+&lt;p&gt;指数&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="https://error-codes.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="数据结构" scheme="https://error-codes.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="数学" scheme="https://error-codes.github.io/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+      <category term="基础" scheme="https://error-codes.github.io/tags/%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="算法" scheme="https://error-codes.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="https://error-codes.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Markdown 教程</title>
