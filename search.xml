@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>数据结构与算法分析(Java语言描述)</title>
-    <url>/undefined/abbrlink.html</url>
+    <url>/posts/d6f4a62d.html</url>
     <content><![CDATA[<h1 id="数学知识复习"><a href="#数学知识复习" class="headerlink" title="数学知识复习"></a>数学知识复习</h1><p>​        　本节列出一些需要记忆或是能够推导出的基本公式，并从推导过程复习基本的证明方法。</p>
 <h3 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h3><script type="math/tex; mode=display">
 X^A X^B = X^{A+B}
