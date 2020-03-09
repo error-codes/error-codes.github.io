@@ -99,7 +99,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/23/3llGOU.png">
 <meta property="og:image" content="https://s2.ax1x.com/2020/02/23/3llYmF.png">
 <meta property="article:published_time" content="2020-02-22T06:44:00.000Z">
-<meta property="article:modified_time" content="2020-02-28T16:01:05.174Z">
+<meta property="article:modified_time" content="2020-03-07T03:08:40.874Z">
 <meta property="article:author" content="BayMax">
 <meta property="article:tag" content="基础知识">
 <meta property="article:tag" content="Java">
@@ -348,8 +348,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-29T00:01:05+08:00">
-                2020-02-29
+              <time title="更新于" itemprop="dateModified" datetime="2020-03-07T11:08:40+08:00">
+                2020-03-07
               </time>
             
           </span>
@@ -420,7 +420,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.7k 字
+                  3.3k 字
                 </span>
               
 
@@ -436,7 +436,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  6 分钟
+                  13 分钟
                 </span>
               
             </div>
@@ -458,39 +458,39 @@
 
       
         <h1 id="数据类型转换"><a href="#数据类型转换" class="headerlink" title="数据类型转换"></a>数据类型转换</h1><p>Java程序中要求参与的计算的数据，必须要保证数据类型的一致性，如果数据类型不一致将发生类型转换。</p>
-<h2 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h2><p>一个<kbd>int</kbd>类型变量和一个<kbd>byte</kbd>类型变量进行假发运算，结果会是什么数据类型？</p>
+<h2 id="自动转换"><a href="#自动转换" class="headerlink" title="自动转换"></a>自动转换</h2><p>一个<code>int</code>类型变量和一个<code>byte</code>类型变量进行假发运算，结果会是什么数据类型？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">byte</span> b = <span class="number">2</span>;</span><br></pre></td></tr></table></figure>
-<p>运算结果，变量的类型将是<kbd>int</kbd>类型，这就死出现了数据类型的自动类型转换现象。</p>
+<p>运算结果，变量的类型将是<code>int</code>类型，这就死出现了数据类型的自动类型转换现象。</p>
 <ul>
-<li><b>自动转换：</b>将<kbd>取值范围小的类型</kbd>自动提升为<kbd>取值范围大的类型</kbd>。</li>
+<li><b>自动转换：</b>将<code>取值范围小的类型</code>自动提升为<code>取值范围大的类型</code>。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">byte</span> b = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// byte x = b + i;  // 报错</span></span><br><span class="line">    <span class="comment">// int类型和byte类型运算，结果是int类型</span></span><br><span class="line">    <span class="keyword">int</span> j = b + i;</span><br><span class="line">    System.out.println(j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="转换原理图解"><a href="#转换原理图解" class="headerlink" title="转换原理图解"></a>转换原理图解</h3><p><kbd>byte</kbd>类型内存占用<kbd>一个字节</kbd>，在和<kbd>int </kbd> 类型进行运算时会提升为<kbd>int </kbd> 类型，自动补充<kbd>三个字节 </kbd> ，因此计算后的结果还是<kbd>int </kbd> 类型。</p>
+<h3 id="转换原理图解"><a href="#转换原理图解" class="headerlink" title="转换原理图解"></a>转换原理图解</h3><p><code>byte</code>类型内存占用<code>一个字节</code>，在和<code>int</code> 类型进行运算时会提升为<code>int</code> 类型，自动补充<code>三个字节</code> ，因此计算后的结果还是<code>int</code> 类型。</p>
 <p><img src="https://s2.ax1x.com/2020/02/23/3llGOU.png" alt="3llGOU.png" style="zoom:80%;" /></p>
-<p>同理，当一个<kbd>int </kbd> 类型变量和一个<kbd>double </kbd> 变量运算时，<kbd>int </kbd> 类型将会自动提升为<kbd>double </kbd> 类型进行运算。</p>
+<p>同理，当一个<code>int</code> 类型变量和一个<code>double</code> 变量运算时，<code>int</code> 类型将会自动提升为<code>double</code> 类型进行运算。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">double</span> d = <span class="number">2.5</span>;</span><br><span class="line">    <span class="comment">// int类型和double类型运算时，结果是double类型</span></span><br><span class="line">    <span class="comment">// int类型会提升为double类型</span></span><br><span class="line">    <span class="comment">// int e = i + d;	// 报错</span></span><br><span class="line">    <span class="keyword">double</span> e = i + d;</span><br><span class="line">    System.out.println(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h3><p>范围小的类型向范围大的类型提升，<kbd>byte、short、char </kbd> 运算时直接提升为<kbd>int </kbd> 。</p>
+<h3 id="转换规则"><a href="#转换规则" class="headerlink" title="转换规则"></a>转换规则</h3><p>范围小的类型向范围大的类型提升，<code>byte、short、char</code> 运算时直接提升为<code>int</code> 。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">byte</span>、<span class="keyword">short</span>、<span class="keyword">char</span> ---&gt; <span class="keyword">int</span> ---&gt; <span class="keyword">long</span> ---&gt; <span class="keyword">float</span> ---&gt; <span class="keyword">double</span></span><br></pre></td></tr></table></figure>
-<h2 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h2><p>将<kbd>$ 1.5 $ </kbd> 赋值到<kbd>int </kbd> 类型变量会发生什么？产生编译失败，肯定无法赋值。</p>
+<h2 id="强制转换"><a href="#强制转换" class="headerlink" title="强制转换"></a>强制转换</h2><p>将<code>1.5</code> 赋值到<code>int</code> 类型变量会发生什么？产生编译失败，肯定无法赋值。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> i = <span class="number">1.5</span>; <span class="comment">// 错误</span></span><br></pre></td></tr></table></figure>
-<p><kbd>double </kbd> 类型内存<kbd>$ 8 $个字节 </kbd> ，<kbd>int </kbd> 类型内存<kbd>$ 4 $ 个字节 </kbd> 。</p>
-<p><kbd>$ 1.5 $ </kbd> 是<kbd>double </kbd> 类型，取值范围大于<kbd>int </kbd> 。可以理解为<kbd>double </kbd> 是8升的水桶，<kbd>int </kbd> 是4升的水杯，不能把水桶中的水直接倒进水杯中。</p>
-<p>想要赋值成功，只有通过强制类型转换，将<kbd>double </kbd> 类型强制转换为<kbd>int </kbd> 类型才能赋值。</p>
+<p><code>double</code> 类型内存<code>8个字节</code> ，<code>int</code> 类型内存<code>4个字节</code> 。</p>
+<p><code>1.5</code> 是<code>double</code> 类型，取值范围大于<code>int</code> 。可以理解为<code>double</code> 是8升的水桶，<code>int</code> 是4升的水杯，不能把水桶中的水直接倒进水杯中。</p>
+<p>想要赋值成功，只有通过强制类型转换，将<code>double</code> 类型强制转换为<code>int</code> 类型才能赋值。</p>
 <ul>
-<li><b>强制类型转换：</b>将<kbd>取值范围大的类型 </kbd> 强制转换为<kbd>取值范围小的类型 </kbd> 。</li>
+<li><b>强制类型转换：</b>将<code>取值范围大的类型</code> 强制转换为<code>取值范围小的类型</code> 。</li>
 </ul>
 <p>比较而言，自动转换是Java自动执行的，而强制转换需要我们手动执行。</p>
 <p>自动转换是Java判断后给出的方案，水杯不能装下水桶中的水，把水杯换成同等大小的水桶，然后再把水桶中的水倒进水杯换成的水桶中。</p>
 <p>强制转换是我们判断后给出的方案，水杯就要装水桶中的水，多出来的水就让它溢出，能装多少水就装多少水。</p>
 <h3 id="转换格式"><a href="#转换格式" class="headerlink" title="转换格式"></a>转换格式</h3><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据类型 变量名 = （数据类型）被转数据值<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<p>将<kbd>$ 1.5 $ </kbd> 赋值到<kbd>int </kbd> 类型，代码修改为：</p>
+<p>将<code>1.5</code> 赋值到<code>int</code> 类型，代码修改为：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// double类型强制转换为int类型，直接去掉小数点。</span></span><br><span class="line"><span class="keyword">int</span> i = (<span class="keyword">int</span>)<span class="number">1.5</span>;</span><br></pre></td></tr></table></figure>
-<p>同理，当一个<kbd>short </kbd> 类型与<kbd>1 </kbd> 相加，我们知道会类型提升，但是还想给结果赋值为short类型，就需要强制类型转换。</p>
+<p>同理，当一个<code>short</code> 类型与<code>1</code> 相加，我们知道会类型提升，但是还想给结果赋值为short类型，就需要强制类型转换。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="comment">// short类型变量，内存中2个字节</span></span><br><span class="line">	<span class="keyword">short</span> s = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">		出现编译失败</span></span><br><span class="line"><span class="comment">		s 和 1 做运算时，1 是 int 类型，s 会被提升为 int 类型</span></span><br><span class="line"><span class="comment">		s + 1 后的结果是 int 类型，将结果再赋值给 short 类型时发生错误</span></span><br><span class="line"><span class="comment">		short 内存2个字节，int 内存4个字节</span></span><br><span class="line"><span class="comment">		必须将 int 强制转换为 short 才能完成赋值</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">	s = s + <span class="number">1</span>; <span class="comment">// 编译失败</span></span><br><span class="line">	s = (<span class="keyword">short</span>)(s + <span class="number">1</span>); <span class="comment">// 编译成功</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="转换原理图解-1"><a href="#转换原理图解-1" class="headerlink" title="转换原理图解"></a>转换原理图解</h3><p><img src="https://s2.ax1x.com/2020/02/23/3llYmF.png" alt="3llYmF.png" style="zoom:80%;" /></p>
 <h2 id="强烈注意"><a href="#强烈注意" class="headerlink" title="强烈注意"></a>强烈注意</h2><ul>
 <li>浮点转成整形，直接取消小数点，可能会造成数据损失精度。</li>
-<li><kbd>int </kbd> 强制转成<kbd>short </kbd> 砍掉2个字节，可能造成数据丢失。</li>
+<li><code>int</code> 强制转成<code>short</code> 砍掉2个字节，可能造成数据丢失。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义s为short范围内最大值</span></span><br><span class="line"><span class="keyword">short</span> s = <span class="number">32767</span>;</span><br><span class="line"><span class="comment">// 运算后，强制转换，砍掉2个字节后会出现不确定的结果</span></span><br><span class="line">s = (<span class="keyword">short</span>)(s + <span class="number">10</span>); <span class="comment">// -32759</span></span><br></pre></td></tr></table></figure>
 <h2 id="ASCII编码表"><a href="#ASCII编码表" class="headerlink" title="ASCII编码表"></a>ASCII编码表</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="comment">// 字符类型变量</span></span><br><span class="line">	<span class="keyword">char</span> c = <span class="string">'a'</span>;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">// 字符类型和int类型计算</span></span><br><span class="line">	System.out.println(c + i); <span class="comment">// 98</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -551,27 +551,27 @@
 </thead>
 <tbody>
 <tr>
-<td><kbd>+</kbd></td>
+<td><code>+</code></td>
 <td>加法运算、字符串连接运算</td>
 </tr>
 <tr>
-<td><kbd>-</kbd></td>
+<td><code>-</code></td>
 <td>减法运算</td>
 </tr>
 <tr>
-<td><kbd>*</kbd></td>
+<td><code>*</code></td>
 <td>乘法运算</td>
 </tr>
 <tr>
-<td><kbd>/</kbd></td>
+<td><code>/</code></td>
 <td>除法运算</td>
 </tr>
 <tr>
-<td><kbd>%</kbd></td>
+<td><code>%</code></td>
 <td>取模运算，两个数字相除取余数</td>
 </tr>
 <tr>
-<td><kbd>++ </kbd> 、<kbd>—</kbd></td>
+<td><code>++</code> 、<code>--</code></td>
 <td>自增、自减运算</td>
 </tr>
 </tbody>
@@ -580,32 +580,32 @@
 <p>Java中，整数使用以上运算符，无论如何计算，也不会得到小数。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">1357</span>;</span><br><span class="line">	System.out.println(i/<span class="number">1000</span>*<span class="number">1000</span>); <span class="comment">// 1000</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><b><kbd>++ </kbd> 运算，变量自己增加1。反之，<kbd>— </kbd> 运算，变量自己减少1，</b>用法与<kbd>++ </kbd> 一致。</p>
+<li><p><b><code>++</code> 运算，变量自己增加1。反之，<code>--</code> 运算，变量自己减少1，</b>用法与<code>++</code> 一致。</p>
 <ul>
 <li><p><b>独立运算：</b></p>
 <ul>
-<li>变量在独立运算时，<kbd>前++ </kbd> 和<kbd>后++ </kbd> 没有区别。</li>
-<li>变量<kbd>前++ </kbd> ：例如<kbd>++i </kbd> 。</li>
-<li>变量<kbd>后++ </kbd> ：例如<kbd>i++ </kbd> 。</li>
+<li>变量在独立运算时，<code>前++</code> 和<code>后++</code> 没有区别。</li>
+<li>变量<code>前++</code> ：例如<code>++i</code> 。</li>
+<li>变量<code>后++</code> ：例如<code>i++</code> 。</li>
 </ul>
 </li>
 <li><p><b>混合运算：</b></p>
 <ul>
-<li><p>和其他变量放在一起，<kbd>前++ </kbd> 和<kbd>后++ </kbd> 就产生了不同。</p>
+<li><p>和其他变量放在一起，<code>前++</code> 和<code>后++</code> 就产生了不同。</p>
 </li>
-<li><p>变量<kbd>前++ </kbd> ：变量a自己加1，将加1后的结果赋值给b，也就是说a先计算。a和b都是2。</p>
+<li><p>变量<code>前++</code> ：变量a自己加1，将加1后的结果赋值给b，也就是说a先计算。a和b都是2。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> b = ++a;</span><br><span class="line">	System.out.println(a); <span class="comment">// 2</span></span><br><span class="line">	System.out.println(b); <span class="comment">// 2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>变量<kbd>后++ </kbd> ：变量a自己的值赋值给变量b，此时变量b的值就是1，变量a自己再加1。a是2，b是1。</p>
+<li><p>变量<code>后++</code> ：变量a自己的值赋值给变量b，此时变量b的值就是1，变量a自己再加1。a是2，b是1。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> a = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> b = a++;</span><br><span class="line">	System.out.println(a); <span class="comment">// 2</span></span><br><span class="line">	System.out.println(b); <span class="comment">// 1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><b><kbd>+ </kbd> 符号在字符串中的操作：</b></p>
+<li><p><b><code>+</code> 符号在字符串中的操作：</b></p>
 <ul>
-<li><p><kbd>+ </kbd> 符号在遇到字符串的时候，表示连接，拼接的含义。</p>
+<li><p><code>+</code> 符号在遇到字符串的时候，表示连接，拼接的含义。</p>
 </li>
 <li><p>“a” + “b”的结果是”ab”，连接含义。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="string">"5 + 5 = "</span> + <span class="number">5</span> + <span class="number">5</span>); <span class="comment">// 输出5 + 5 = 55</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -623,27 +623,27 @@
 </thead>
 <tbody>
 <tr>
-<td><kbd>=</kbd></td>
+<td><code>=</code></td>
 <td>等于号</td>
 </tr>
 <tr>
-<td><kbd>+=</kbd></td>
+<td><code>+=</code></td>
 <td>加等于</td>
 </tr>
 <tr>
-<td><kbd>-=</kbd></td>
+<td><code>-=</code></td>
 <td>减等于</td>
 </tr>
 <tr>
-<td><kbd>*=</kbd></td>
+<td><code>*=</code></td>
 <td>乘等于</td>
 </tr>
 <tr>
-<td><kbd>/=</kbd></td>
+<td><code>/=</code></td>
 <td>除等于</td>
 </tr>
 <tr>
-<td><kbd>%=</kbd></td>
+<td><code>%=</code></td>
 <td>取模等</td>
 </tr>
 </tbody>
@@ -664,34 +664,34 @@
 </thead>
 <tbody>
 <tr>
-<td><kbd>==</kbd></td>
+<td><code>==</code></td>
 <td>比较符号两边数据是否相等，相等结果是true。</td>
 </tr>
 <tr>
-<td>&lt;kbd><</kbd></td>
+<td><code>&lt;</code></td>
 <td>比较符号左边的数据是否小于右边的数据，如果小于结果是true。</td>
 </tr>
 <tr>
-<td><kbd&gt;></kbd></td>
+<td><code>&gt;</code></td>
 <td>比较符号左边的数据是否大于右边的数据，如果大于结果是true。</td>
 </tr>
 <tr>
-<td><kbd>&lt;=</kbd></td>
+<td><code>&lt;=</code></td>
 <td>比较符号左边的数据是否小于或者等于右边的数据，如果小于结果是true。</td>
 </tr>
 <tr>
-<td><kbd>&gt;=</kbd></td>
+<td><code>&gt;=</code></td>
 <td>比较符号左边的数据是否大于或者等于右边的数据，如果小于结果是true。</td>
 </tr>
 <tr>
-<td><kbd>!=</kbd></td>
+<td><code>!=</code></td>
 <td>不等于符号 ，如果符号两边的数据不相等，结果是true。</td>
 </tr>
 </tbody>
 </table>
 </div>
 <ul>
-<li><p><b>比较运算符：</b>是两个数据之间进行比较的运算，运算结果都是布尔值<kbd>true </kbd> 或者<kbd>false </kbd> 。</p>
+<li><p><b>比较运算符：</b>是两个数据之间进行比较的运算，运算结果都是布尔值<code>true</code> 或者<code>false</code> 。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="number">1</span> == <span class="number">1</span>); <span class="comment">// true</span></span><br><span class="line">	System.out.println(<span class="number">1</span> &lt; <span class="number">2</span>); <span class="comment">// true</span></span><br><span class="line">	System.out.println(<span class="number">3</span> &gt; <span class="number">4</span>); <span class="comment">// false</span></span><br><span class="line">	System.out.println(<span class="number">3</span> &lt;= <span class="number">4</span>); <span class="comment">// true</span></span><br><span class="line">	System.out.println(<span class="number">3</span> &gt;= <span class="number">4</span>); <span class="comment">// false</span></span><br><span class="line">	System.out.println(<span class="number">3</span> != <span class="number">4</span>); <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -705,22 +705,22 @@
 </thead>
 <tbody>
 <tr>
-<td><kbd>&amp;&amp; </kbd> 短路与</td>
+<td><code>&amp;&amp;</code> 短路与</td>
 <td>$ 1 $ . 　两边都是true，结果是true<br/>$ 2 $ . 　一边是false，结果是false<br/>短路特点：符号左边是false，右边不再运算</td>
 </tr>
 <tr>
-<td><kbd>&#124;&#124; </kbd> 短路或</td>
+<td><code>&#124;&#124;</code> ` 短路或</td>
 <td>$ 1 $ .　 两边都是false，结果是false<br/>$ 2 $ . 　一边是true，结果是true<br/>短路特点： 符号左边是true，右边不再运算</td>
 </tr>
 <tr>
-<td><kbd>！ </kbd> 取反</td>
+<td><code>!</code> 取反</td>
 <td>$ 1 $. 　! true 结果是false<br/>$ 2 $ . 　! false结果是true</td>
 </tr>
 </tbody>
 </table>
 </div>
 <ul>
-<li><p><b>逻辑运算符：</b>是用来连接两个布尔类型结果的运算符，运算结果都是布尔值<kbd>true </kbd> 或者<kbd>false </kbd> 。</p>
+<li><p><b>逻辑运算符：</b>是用来连接两个布尔类型结果的运算符，运算结果都是布尔值<code>true</code> 或者<code>false</code> 。</p>
   <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	System.out.println(<span class="keyword">true</span> &amp;&amp; <span class="keyword">true</span>); <span class="comment">// true</span></span><br><span class="line">	System.out.println(<span class="keyword">true</span> &amp;&amp; <span class="keyword">false</span>); <span class="comment">// false</span></span><br><span class="line">	System.out.println(<span class="keyword">false</span> &amp;&amp; <span class="keyword">true</span>); <span class="comment">// false</span></span><br><span class="line">	</span><br><span class="line">	System.out.println(<span class="keyword">false</span> || <span class="keyword">false</span>); <span class="comment">// false</span></span><br><span class="line">	System.out.println(<span class="keyword">false</span> || <span class="keyword">true</span>); <span class="comment">// true</span></span><br><span class="line">	System.out.println(<span class="keyword">true</span> || <span class="keyword">false</span>); <span class="comment">// true</span></span><br><span class="line">	</span><br><span class="line">	System.out.println(!<span class="keyword">false</span>); <span class="comment">// true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
@@ -749,11 +749,11 @@
 <li><p><b>定义格式解释：</b></p>
 <ul>
 <li><b>修饰符：</b><ul>
-<li>可访问控制符：<br/>公共访问控制符<kbd>public</kbd>；<br/>私有访问控制符<kbd>private</kbd>；<br/>保护访问控制符<kbd>protected</kbd>；<br/>私有保护访问控制符<kbd>private protected </kbd> 。</li>
-<li>非访问控制符：<br/>抽象方法控制符<kbd>abstract</kbd>；<br/>静态方法控制符<kbd>static</kbd>；<br/>最终方法控制符<kbd>final</kbd>；<br/>本地方法控制符<kbd>native</kbd>；<br/>同步方法控制符<kbd>synchronized </kbd> 。</li>
+<li>可访问控制符：<br/>公共访问控制符<code>public</code>；<br/>私有访问控制符<code>private</code>；<br/>保护访问控制符<code>protected</code>；<br/>私有保护访问控制符<code>private protected</code> 。</li>
+<li>非访问控制符：<br/>抽象方法控制符<code>abstract</code>；<br/>静态方法控制符<code>static</code>；<br/>最终方法控制符<code>final</code>；<br/>本地方法控制符<code>native</code>；<br/>同步方法控制符<code>synchronized</code> 。</li>
 </ul>
 </li>
-<li><b>返回值类型：</b><br/>空返回值类型<kbd>void</kbd>；<br>非空返回值类型<kbd>int、float、long、String、ArrayList&lt;&gt;、Object </kbd> 等。</li>
+<li><b>返回值类型：</b><br/>空返回值类型<code>void</code>；<br>非空返回值类型<code>int、float、long、String、ArrayList&lt;&gt;、Object</code> 等。</li>
 <li><b>方法名：</b>为定义的方法起名，满足标识符规范，用来调用方法，推荐采用驼峰式命名。eg：methodA。</li>
 <li><b>参数列表：</b><ul>
 <li>无参数：留空，不需要。</li>
@@ -787,9 +787,9 @@
 </li>
 </ul>
 <h1 id="扩展知识点"><a href="#扩展知识点" class="headerlink" title="扩展知识点"></a>扩展知识点</h1><h2 id="符号的扩展"><a href="#符号的扩展" class="headerlink" title="+=符号的扩展"></a>+=符号的扩展</h2><h3 id="下面的程序有问题吗？"><a href="#下面的程序有问题吗？" class="headerlink" title="下面的程序有问题吗？"></a>下面的程序有问题吗？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="keyword">short</span> s = <span class="number">1</span>;</span><br><span class="line">	s += <span class="number">1</span>;</span><br><span class="line">	System.out.println(s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>分析：<kbd>s += 1 </kbd> 逻辑上看作是<kbd>s = s + 1 </kbd> ，计算结果被提升为int类型，再向short类型赋值时发生错误，因为不能将取值范围大的类型赋值到取值范围小的类型。但是，<kbd>s = s + 1  进行两次运算 </kbd> ，<kbd>+= </kbd> 是一个运算符，只运算一次，并带有强制转换的特点，也就是说<kbd>s += 1 </kbd> 就是<kbd>s = (short)(s + 1) </kbd> ，因此没有问题，编译通过，运行结果为2。</p>
+<p>分析：<code>s += 1</code> 逻辑上看作是<code>s = s + 1</code> ，计算结果被提升为int类型，再向short类型赋值时发生错误，因为不能将取值范围大的类型赋值到取值范围小的类型。但是，<code>s = s + 1  进行两次运算</code> ，<code>+=</code> 是一个运算符，只运算一次，并带有强制转换的特点，也就是说<code>s += 1</code> 就是<code>s = (short)(s + 1)</code> ，因此没有问题，编译通过，运行结果为2。</p>
 <h2 id="常量和变量的运算"><a href="#常量和变量的运算" class="headerlink" title="常量和变量的运算"></a>常量和变量的运算</h2><h3 id="下面的程序有问题吗？-1"><a href="#下面的程序有问题吗？-1" class="headerlink" title="下面的程序有问题吗？"></a>下面的程序有问题吗？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">	<span class="keyword">byte</span> b1 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">byte</span> b2 = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">byte</span> b3 = <span class="number">1</span> + <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">byte</span> b4 = b1 + b2;</span><br><span class="line">    System.out.println(b3);</span><br><span class="line">    System.out.println(b4);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>分析： <kbd>b3 = 1 + 2  </kbd> ， <kbd>1 和 2</kbd>是常量，为固定不变的数据，在编译的时候（编译器javac），已经确定了 <kbd>1 + 2</kbd>的结果并没 有超过byte类型的取值范围，可以赋值给变量 <kbd>b3</kbd>，因此 <kbd>b3=1 + 2</kbd>是正确的。<br>反之， <kbd>b4 = b2 + b3</kbd>， <kbd>b2 和 b3</kbd>是变量，变量的值是可能变化的，在编译的时候，编译器javac不确定<kbd>b2 + b3 </kbd> 的结果是什 么，因此会将结果以int类型进行处理，所以int类型不能赋值给byte类型，因此编译失败。</p>
+<p>分析： <code>b3 = 1 + 2</code> ， <code>1 和 2</code>是常量，为固定不变的数据，在编译的时候（编译器javac），已经确定了 <code>1 + 2</code>的结果并没 有超过byte类型的取值范围，可以赋值给变量 <code>b3</code>，因此 <code>b3=1 + 2</code>是正确的。<br>反之， <code>b4 = b2 + b3</code>， <code>b2 和 b3</code>是变量，变量的值是可能变化的，在编译的时候，编译器javac不确定<code>b2 + b3</code> 的结果是什 么，因此会将结果以int类型进行处理，所以int类型不能赋值给byte类型，因此编译失败。</p>
 
       
     </div>
@@ -959,7 +959,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
