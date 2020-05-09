@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>MySQL必知必会（三）</title>
+    <url>/posts/5787d14b.html</url>
+    <content><![CDATA[<h1 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h1><h2 id="计算字段"><a href="#计算字段" class="headerlink" title="计算字段"></a>计算字段</h2><p>存储在数据库表中的数据一般不是应用程序所需要的格式。下面举几个例子：</p>
+<p>■ 如果想在一个字段中既显示公司名，又显示公司的地址，但这两个信息一般包含在不同的表列中。 </p>
+<p>■ 列数据是大小写混合的，但报表程序需要把所有数据按大写表示出来。</p>
+<p>■ 物品订单表存储物品的价格和数量，但不需要存储每个物品的总价格（用价格乘以数量即可）。为打印发票，需要物品的总价格。 </p>
+<p>■ 需要根据表数据进行总数、平均数计算或其他计算。 </p>
+<p>在上述每个例子中，存储在表中的数据都不是应用程序所需要的。 我们需要直接从数据库中检索出转换、计算或格式化过的数据；而不是检索出数据，然后再在客户机应用程序或报告程序中重新格式化。 这就是计算字段发挥作用的所在了。与前面各章介绍过的列不同， 计算字段并不实际存在于数据库表中。计算字段是运行时在SELECT语句内创建的。</p>
+<p><strong><code>字段(field)     基本上与列(column)的意思相同，经常互换使用，不过数据库列一般称为列，而术语字段通常用在计算字段的连接上。</code></strong></p>
+<blockquote>
+<p><strong>客户机与服务器的格式</strong> </p>
+<p>可在SQL语句内完成的许多转换和格式化工作都可以直接在客户机应用程序内完成。但一般来说，在数据库服务器上完成这些操作比在客户机中完成要快得多，因为DBMS是设计来快速有效地完成这种处理的。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>MySQL必知必会</title>
+    <url>/posts/df083c4d.html</url>
+    <content><![CDATA[<h1 id="了解SQL"><a href="#了解SQL" class="headerlink" title="了解SQL"></a>了解SQL</h1><h2 id="什么是数据库？"><a href="#什么是数据库？" class="headerlink" title="什么是数据库？"></a>什么是数据库？</h2><p><strong>数据库是一个以某种有组织的方式存储的数据集合。</strong>可以将数据库想象为一个冰箱，冰箱是一个存放食物的电器，不论食物是什么样的以及如何划分的。</p>
+<p><strong><code>数据库(database)        保存有组织的数据的容器（通常是一个文件或一组文件）。</code></strong></p>
+<blockquote>
+<p><strong>误用导致混淆</strong></p>
+<p>很多人通常用数据库这个术语来代表他们使用的数据库软件，这是错误的，它是引起混淆的根源。确切的说，<strong>数据库软件应该被称为DBMS（数据库管理系统）。</strong></p>
+</blockquote>
+<h2 id="表"><a href="#表" class="headerlink" title="表"></a>表</h2><p>冰箱是一个保存食物的电器，在你将食物放进冰箱存储时，并不是随便往冰箱里一扔，而是根据食物的类别，放入不同的隔层中，你不可能把等会要喝的饮料扔进冷冻室吧，如果你牙口好，那当我没说。。。</p>
+<p>在数据库领域，这种冰箱的隔层可以称为表，<strong>表是一种结构化的文件，可以用来存储某种特定类型的数据。</strong>表可以保存产品目录，客户清单，或者其他信息清单。</p>
+<p><strong><code>表(table)        某种特定数据类型的结构化清单。</code></strong></p>
+<blockquote>
+<p><strong>存储在表中的数据是一种类型的数据或一个清单。</strong>绝不应该把产品目录和客户清单存储在一个数据库的表中。这样将使以后的检索和访问很困难。应当一个清单一个表。</p>
+</blockquote>
+<p><strong>数据库中每个表都有一个名字，用来标识自己。此名字是唯一的，这表示数据库中没有其他表具有相同的名字。</strong></p>
+<blockquote>
+<p><strong>表名</strong></p>
+<p>表名的唯一性取决于多个因素，如数据库名和表名等的结合。<strong>虽然在相同的数据库中不能两次使用相同的表名。但在不同的数据库中可以使用相同的表名。</strong></p>
+</blockquote>
+<p>表又具有一些特性，这些特性定义了数据在表中如何存储，如可以存储什么样的数据，数据如何分解，各部分信息如何命名，等等。描述表的这组信息就是所谓的模式，模式可以用来描述数据库中特定的表以及整个数据库（和其中表的关系）。</p>
+<p><strong><code>模式(schema)        关于数据库和表的布局以及特性的信息。</code></strong></p>
+<blockquote>
+<p><strong>是模式还是数据库？</strong></p>
+<p>有时模式用作数据库的同义词。遗憾的是，模式的含义通常不是很清晰。</p>
+</blockquote>
+<h2 id="列和数据类型"><a href="#列和数据类型" class="headerlink" title="列和数据类型"></a>列和数据类型</h2><p><strong>表由列组成。</strong>列中存储着表中的某部分信息。</p>
+<p><strong><code>列(column)        表中的一个字段。所有表都是由一个或多个列组合成的。</code></strong></p>
+<blockquote>
+<p><strong>分解数据</strong></p>
+<p>正确的将数据分解为多个列极为重要。例如，国家、籍贯、邮政编码应该总是独立的列。如果国家和籍贯组合在一起，找出特定国家或特定城市的所有顾客，按国家进行排序或过滤将会异常困难。</p>
+</blockquote>
+<p>数据库中每个列都有相应的数据类型。数据类型定义列可以存储的数据种类。</p>
+<p><strong><code>数据类型(datatype)        所容许的数据的类型。每个表列都有相应的数据类型，它限制（或容许）该列中存储的数据。</code></strong></p>
+<blockquote>
+<p><strong>数据类型限制可存储在列中的数据种类（例如，防止在数值字段中录入字符值）。数据类型还帮助正确的排序数据，并在优化磁盘使用方面起着重要的作用。因此，在创建表时必须对数据类型予以特别的关注。</strong></p>
+</blockquote>
+<h2 id="行"><a href="#行" class="headerlink" title="行"></a>行</h2><p><strong>表中的数据是按行存储的</strong>，例如顾客表中每一行存储着一个顾客，表中的行数为记录的总数。</p>
+<p><strong><code>行(row)        表中的一个记录。</code></strong></p>
+<blockquote>
+<p><strong>是记录还是行？</strong></p>
+<p>你可能听到用户在提到行（row）时称其为数据库记录（record）。在很大程度上，这两个术语是可以互相替代的，但从技术上说，行才是正确的术语。</p>
+</blockquote>
+<h2 id="主键"><a href="#主键" class="headerlink" title="主键"></a>主键</h2><p>表中每一行都应该有一个可以唯一标识自己的一列（或一组列）。一个顾客表中可以使用顾客编号来作为标识自己的列，而订单表可以使用订单ID来作为标识自己的列。</p>
+<p><strong><code>主键(primary key)        一列（或一组列），其值能够唯一区分表中每一行。</code></strong></p>
+<p>唯一标识表中每行的这个列称为主键，主键用来表示一个特定的行。没有主键，更新或删除表中特定的行会特别困难，因为没有安全的方法保证只涉及相关的行。</p>
+<blockquote>
+<p><strong>应该总是定义主键</strong></p>
+<p>虽然并不总是都需要主键，但大多数数据库设计人员都应该保证他们创建的每一个表都具有主键，以便于以后的数据库操作和管理。</p>
+</blockquote>
+<p>表中的任何列都可以作为主键，只要它满足以下条件：</p>
+<p>□ 任意两行都不具有相同的主键值；</p>
+<p>■ 每行都必须要有一个主键值（主键列不允许存在NULL值）。</p>
+<blockquote>
+<p><strong>主键值规则</strong></p>
+<p>这里列出的规则是MySQL本身强制实施的。</p>
+</blockquote>
+<p>主键通常定义在表的一列上，但这并不是必须的，亦可以一起使用多个列作为主键。在使用多列作为主键时，上述条件必须应用到构成主键的所有列，所有列值的组合必须是唯一的（但单个列可以不唯一）。</p>
+<blockquote>
+<p><strong>主键的最好习惯</strong></p>
+<p>除MySQL强制实施的规则外，应该坚持的几个普遍认可的最好习惯：</p>
+<ul>
+<li><strong>不更新主键列中的值；</strong></li>
+<li><strong>不重用主键列中的值；</strong></li>
+<li><strong>不在主键列中使用可能会更改的值。</strong>（如果使用学生姓名作为学生信息表的主键，当学生姓名更改时，必须更改这个主键。）</li>
+</ul>
+</blockquote>
+<h2 id="什么是SQL"><a href="#什么是SQL" class="headerlink" title="什么是SQL"></a>什么是SQL</h2><p><strong>SQL（发音为字母S-Q-L或sequel）是结构化查询语言（Structured Query Language）的缩写。SQL是一种专门用来与数据库通信的语言。</strong></p>
+<p><strong>SQL有如下优点：</strong></p>
+<ul>
+<li><u>SQL不是某个特定的数据库供应商专有的语言。</u></li>
+<li><u>SQL简单易学。</u></li>
+<li><u>SQL可以进行非常复杂和高级的数据库操作。</u></li>
+</ul>
+<h1 id="MySQL简介"><a href="#MySQL简介" class="headerlink" title="MySQL简介"></a>MySQL简介</h1><h2 id="什么是MySQL"><a href="#什么是MySQL" class="headerlink" title="什么是MySQL"></a>什么是MySQL</h2><p><strong>MySQL是一种DBMS，它是一种数据库软件。</strong></p>
+<p><strong>MySQL的优点：</strong></p>
+<ul>
+<li><strong>成本</strong>——MySQL是开放源代码的，一般可以免费使用（甚至免费修改）。</li>
+<li><strong>性能</strong>——MySQL执行很快。</li>
+<li><strong>信赖</strong>——某些非常著名和声望很高的公司、站点使用MySQL来处理自己的重要数据。</li>
+<li><strong>简单</strong>——MySQL容易安装和使用。</li>
+</ul>
+<p>MySQL受到的唯一真正批评是它并不总是支持其他DBMS提供的功能和特性。然而这一点也在逐步改善。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>反射</title>
+    <url>/posts/7af799fd.html</url>
+    <content><![CDATA[<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p><a href="[https://baike.baidu.com/item/JAVA%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/6015990?fr=aladdin](https://baike.baidu.com/item/JAVA反射机制/6015990?fr=aladdin">Java反射机制</a>)<strong>是指在程序的运行状态中，可以构造任意一个类的对象，可以了解任意一个对象所属的类，可以了解任意一个类的成员变量和方法，可以调用任意一个对象的属性和方法。这种动态获取程序信息以及动态调用对象的功能称为Java语言的反射机制。反射被视为动态语言的关键。</strong></p>
+]]></content>
+  </entry>
+  <entry>
     <title>线程池、Lambda表达式</title>
     <url>/posts/d2b27c03.html</url>
     <content><![CDATA[<h1 id="等待唤醒机制"><a href="#等待唤醒机制" class="headerlink" title="等待唤醒机制"></a>等待唤醒机制</h1><h2 id="线程间通信"><a href="#线程间通信" class="headerlink" title="线程间通信"></a>线程间通信</h2><p><strong>概念：</strong>多个线程在处理同一个资源，但是处理的动作（线程的任务）却不相同。</p>
@@ -234,7 +341,7 @@
 <p>异常指的并不是语法错误,语法错了,编译不通过,不会产生字节码文件,根本不能运行.</p>
 </blockquote>
 <h2 id="异常体系"><a href="#异常体系" class="headerlink" title="异常体系"></a>异常体系</h2><p>异常机制其实是帮助我们<strong>找到</strong>程序中的问题，异常的根类是<code>java.lang.Throwable</code>，其下有两个子类：<code>java.lang.Error</code>与<code>java.lang.Exception</code>，平常所说的异常指<code>java.lang.Exception</code>。</p>
-<p><img src="img\异常体系.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhA7Bd.png" alt="GhA7Bd.png" style="zoom:80%;" /></p>
 <p><strong>Throwable体系：</strong></p>
 <ul>
 <li><strong>Error</strong>:严重错误Error，无法通过处理的错误，只能事先避免，好比绝症。</li>
@@ -252,13 +359,13 @@
 </li>
 </ul>
 <p><strong><em>出现异常,不要紧张,把异常的简单类名,拷贝到API中去查。</em></strong></p>
-<p><img src="img\简单的异常查看.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhE9Bj.png" alt="GhE9Bj.png" style="zoom:80%;" /></p>
 <h2 id="异常分类"><a href="#异常分类" class="headerlink" title="异常分类"></a>异常分类</h2><p>我们平常说的异常就是指Exception，因为这类异常一旦出现，我们就要对代码进行更正，修复程序。</p>
 <p><strong>异常(Exception)的分类</strong>:根据在编译时期还是运行时期去检查异常?</p>
 <ul>
 <li><strong>编译时期异常</strong>:checked异常。在编译时期,就会检查,如果没有处理异常,则编译失败。(如日期格式化异常)</li>
 <li><p><strong>运行时期异常</strong>:runtime异常。在运行时期,检查异常.在编译时期,运行异常不会编译器检测(不报错)。(如数学异常)</p>
-<p>  <img src="img\异常的分类.png" alt=""></p>
+<p>  <img src="https://s1.ax1x.com/2020/04/08/GhEk40.png" alt="GhEk40.png" style="zoom:80%;" /></p>
 </li>
 </ul>
 <h2 id="异常的产生过程解析"><a href="#异常的产生过程解析" class="headerlink" title="异常的产生过程解析"></a>异常的产生过程解析</h2><p>先运行下面的程序，程序会产生一个数组索引越界异常ArrayIndexOfBoundsException。我们通过图解来解析下异常产生的过程。</p>
@@ -267,7 +374,7 @@
 <p> 测试类</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ExceptionDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] arr = &#123; <span class="number">34</span>, <span class="number">12</span>, <span class="number">67</span> &#125;;</span><br><span class="line">        intnum = ArrayTools.getElement(arr, <span class="number">4</span>)</span><br><span class="line">        System.out.println(<span class="string">"num="</span> + num);</span><br><span class="line">        System.out.println(<span class="string">"over"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>上述程序执行过程图解：</p>
-<p> <img src="img\异常产生过程.png" alt=""></p>
+<p> <img src="https://s1.ax1x.com/2020/04/08/GhEnu4.png" alt="GhEnu4.png" style="zoom:80%;" /></p>
 <h1 id="异常的处理"><a href="#异常的处理" class="headerlink" title="异常的处理"></a>异常的处理</h1><p>Java异常处理的五个关键字：<strong>try、catch、finally、throw、throws</strong></p>
 <h2 id="抛出异常throw"><a href="#抛出异常throw" class="headerlink" title="抛出异常throw"></a>抛出异常throw</h2><p>在编写程序时，我们必须要考虑程序出现问题的情况。比如，在定义方法时，方法需要接受参数。那么，当调用方法使用接受到的参数时，首先需要先对参数数据进行合法的判断，数据若不合法，就应该告诉调用者，传递合法的数据进来。这时需要使用抛出异常的方式来告诉调用者。</p>
 <p>在java中，提供了一个<strong>throw</strong>关键字，它用来抛出一个指定的异常对象。那么，抛出一个异常具体如何操作呢？</p>
@@ -345,7 +452,7 @@
 <blockquote>
 <p>当只有在try或者catch中调用退出JVM的相关方法,此时finally才不会执行,否则finally永远会执行。</p>
 </blockquote>
-<p><img src="img\死了都要try.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhE8C6.png" alt="GhE8C6.png" style="zoom:80%;" /></p>
 <h2 id="异常注意事项"><a href="#异常注意事项" class="headerlink" title="异常注意事项"></a>异常注意事项</h2><ul>
 <li><p>多个异常使用捕获又该如何处理呢？</p>
 <ol>
@@ -390,7 +497,7 @@
 <li><strong>并发</strong>：指两个或多个事件在<strong>同一个时间段内</strong>发生。</li>
 <li><strong>并行</strong>：指两个或多个事件在<strong>同一时刻</strong>发生（同时发生）。</li>
 </ul>
-<p><img src="img\并行与并发.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhEwVA.png" alt="GhEwVA.png" style="zoom:80%;" /></p>
 <p>在操作系统中，安装了多个程序，并发指的是在一段时间内宏观上有多个程序同时运行，这在单 CPU 系统中，每一时刻只能有一道程序执行，即微观上这些程序是分时的交替运行，只不过是给人的感觉是同时运行，那是因为分时交替运行的时间是非常短的。</p>
 <p>而在多个 CPU 系统中，则这些可以并发执行的程序便可以分配到多个处理器上（CPU），实现多任务并行执行，即利用每个处理器来处理一个可以并发执行的程序，这样多个程序便可以同时执行。目前电脑市场上说的多核 CPU，便是多核处理器，核 越多，并行处理的程序越多，能大大的提高电脑运行的效率。</p>
 <blockquote>
@@ -405,9 +512,9 @@
 </ul>
 <p>我们可以再电脑底部任务栏，右键——-&gt;打开任务管理器,可以查看当前任务的进程：</p>
 <p><strong>进程</strong></p>
-<p><img src="img\进程概念.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhE0UI.png" alt="GhE0UI.png" style="zoom:80%;" /></p>
 <p><strong>线程</strong></p>
-<p><img src="img\线程概念.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhEgKg.png" alt="GhEgKg.png" style="zoom:80%;" /></p>
 <p><strong>线程调度:</strong></p>
 <ul>
 <li><p>分时调度</p>
@@ -418,14 +525,12 @@
 <ul>
 <li>设置线程的优先级</li>
 </ul>
-<p><img src="img/设置线程优先级.bmp" alt="设置线程优先级"></p>
-<ul>
+<p><img src="https://s1.ax1x.com/2020/04/08/GhEIP0.png" alt="GhEIP0.png" style="zoom:80%;" /></p>
+</li>
 <li><p>抢占式调度详解</p>
 <p>大部分操作系统都支持多进程并发运行，现在的操作系统几乎都支持同时运行多个程序。比如：现在我们上课一边使用编辑器，一边使用录屏软件，同时还开着画图板，dos窗口等软件。此时，这些程序是在同时运行，”感觉这些软件好像在同一时刻运行着“。</p>
-<p>实际上，CPU(中央处理器)使用抢占式调度模式在多个线程间进行着高速的切换。对于CPU的一个核而言，某个时刻，只能执行一个线程，而 CPU的在多个线程间切换速度相对我们的感觉要快，看上去就是在同一时刻运行。<br>其实，多线程程序并不能提高程序的运行速度，但能够提高程序运行效率，让CPU的使用率更高。</p>
-<p><img src="img/抢占式调度.bmp" alt="抢占式调度"></p>
-</li>
-</ul>
+<p> 实际上，CPU(中央处理器)使用抢占式调度模式在多个线程间进行着高速的切换。对于CPU的一个核而言，某个时刻，只能执行一个线程，而 CPU的在多个线程间切换速度相对我们的感觉要快，看上去就是在同一时刻运行。<br>其实，多线程程序并不能提高程序的运行速度，但能够提高程序运行效率，让CPU的使用率更高。</p>
+<p> <img src="https://s1.ax1x.com/2020/04/08/GhE7xU.png" alt="GhE7xU.png" style="zoom:80%;" /></p>
 </li>
 </ul>
 <h2 id="创建线程类"><a href="#创建线程类" class="headerlink" title="创建线程类"></a>创建线程类</h2><p>Java使用<code>java.lang.Thread</code>类代表<strong>线程</strong>，所有的线程对象都必须是Thread类或其子类的实例。每个线程的作用是完成一定的任务，实际上就是执行一段程序流即一段顺序执行的代码。Java使用线程执行体来代表这段程序流。Java中通过继承Thread类来<strong>创建</strong>并<strong>启动多线程</strong>的步骤如下：</p>
@@ -445,7 +550,7 @@
     <url>/posts/abe0ec5b.html</url>
     <content><![CDATA[<h1 id="Map集合"><a href="#Map集合" class="headerlink" title="Map集合"></a>Map集合</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>现实生活中，我们常会看到这样的一种集合：IP地址与主机名，身份证号与个人，系统用户名与系统用户对象等，这种一一对应的关系，就叫做映射。Java提供了专门的集合类用来存放这种对象关系的对象，即<code>java.util.Map</code>接口。</p>
 <p>我们通过查看<code>Map</code>接口描述，发现<code>Map</code>接口下的集合与<code>Collection</code>接口下的集合，它们存储数据的形式不同，如下图。</p>
-<p><img src="img\Collection与Map.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/Gf8uCQ.png" alt="Gf8uCQ.png" style="zoom:80%;" /></p>
 <ul>
 <li><code>Collection</code>中的集合，元素是孤立存在的（理解为单身），向集合中存储元素采用一个个元素的方式存储。</li>
 <li><code>Map</code>中的集合，元素是成对存在的(理解为夫妻)。每个元素由键与值两部分组成，通过键可以找对所对应的值。</li>
@@ -486,7 +591,7 @@
 <p>代码演示：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapDemo01</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//创建Map集合对象 </span></span><br><span class="line">        HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String,String&gt;();</span><br><span class="line">        <span class="comment">//添加元素到集合 </span></span><br><span class="line">        map.put(<span class="string">"胡歌"</span>, <span class="string">"霍建华"</span>);</span><br><span class="line">        map.put(<span class="string">"郭德纲"</span>, <span class="string">"于谦"</span>);</span><br><span class="line">        map.put(<span class="string">"薛之谦"</span>, <span class="string">"大张伟"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取所有的键  获取键集</span></span><br><span class="line">        Set&lt;String&gt; keys = map.keySet();</span><br><span class="line">        <span class="comment">// 遍历键集 得到 每一个键</span></span><br><span class="line">        <span class="keyword">for</span> (String key : keys) &#123;</span><br><span class="line">          	<span class="comment">//key  就是键</span></span><br><span class="line">            <span class="comment">//获取对应值</span></span><br><span class="line">            String value = map.get(key);</span><br><span class="line">            System.out.println(key+<span class="string">"的CP是："</span>+value);</span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>遍历图解：</p>
-<p><img src="img\Map集合遍历方式一.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GfYa8g.png" alt="GfYa8g.png" style="zoom:80%;" /></p>
 <h2 id="Entry键值对对象"><a href="#Entry键值对对象" class="headerlink" title="Entry键值对对象"></a>Entry键值对对象</h2><p>我们已经知道，<code>Map</code>中存放的是两种对象，一种称为<strong>key</strong>(键)，一种称为<strong>value</strong>(值)，它们在在<code>Map</code>中是一一对应关系，这一对对象又称做<code>Map</code>中的一个<code>Entry(项)</code>。<code>Entry</code>将键值对的对应关系封装成了对象。即键值对对象，这样我们在遍历<code>Map</code>集合时，就可以从每一个键值对（<code>Entry</code>）对象中获取对应的键与对应的值。</p>
 <p> 既然Entry表示了一对键和值，那么也同样提供了获取对应键和对应值得方法：</p>
 <ul>
@@ -508,7 +613,7 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MapDemo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 创建Map集合对象 </span></span><br><span class="line">        HashMap&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String,String&gt;();</span><br><span class="line">        <span class="comment">// 添加元素到集合 </span></span><br><span class="line">        map.put(<span class="string">"胡歌"</span>, <span class="string">"霍建华"</span>);</span><br><span class="line">        map.put(<span class="string">"郭德纲"</span>, <span class="string">"于谦"</span>);</span><br><span class="line">        map.put(<span class="string">"薛之谦"</span>, <span class="string">"大张伟"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取 所有的 entry对象  entrySet</span></span><br><span class="line">        Set&lt;Entry&lt;String,String&gt;&gt; entrySet = map.entrySet();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历得到每一个entry对象</span></span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;String, String&gt; entry : entrySet) &#123;</span><br><span class="line">           	<span class="comment">// 解析 </span></span><br><span class="line">            String key = entry.getKey();</span><br><span class="line">            String value = entry.getValue();  </span><br><span class="line">            System.out.println(key+<span class="string">"的CP是:"</span>+value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>遍历图解：</p>
-<p><img src="img\Map集合遍历方式二.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/Gf4PRe.png" alt="Gf4PRe.png" style="zoom:80%;" /></p>
 <blockquote>
 <p>tips：Map集合不能直接使用迭代器或者foreach进行遍历。但是转成Set之后就可以使用了。</p>
 </blockquote>
@@ -549,57 +654,11 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloJDK9</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        Set&lt;String&gt; str1=Set.of(<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>);  </span><br><span class="line">        <span class="comment">//str1.add("c");这里编译的时候不会错，但是执行的时候会报错，因为是不可变的集合  </span></span><br><span class="line">        System.out.println(str1);  </span><br><span class="line">        Map&lt;String,Integer&gt; str2=Map.of(<span class="string">"a"</span>,<span class="number">1</span>,<span class="string">"b"</span>,<span class="number">2</span>);  </span><br><span class="line">        System.out.println(str2);  </span><br><span class="line">        List&lt;String&gt; str3=List.of(<span class="string">"a"</span>,<span class="string">"b"</span>);  </span><br><span class="line">        System.out.println(str3);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>需要注意以下两点：</p>
 <blockquote>
-<p>1:of()方法只是Map，List，Set这三个接口的静态方法，其父类接口和子类实现并没有这类方法，比如    HashSet，ArrayList等待；</p>
+<p>1:of()方法只是Map，List，Set这三个接口的静态方法，其父类接口和子类实现并没有这类方法，比如    HashSet，ArrayList等；</p>
 <p>2:返回的集合是不可变的；</p>
 </blockquote>
-<h2 id="Debug追踪"><a href="#Debug追踪" class="headerlink" title="Debug追踪"></a>Debug追踪</h2><p><strong>使用IDEA的断点调试功能，查看程序的运行过程</strong></p>
-<ol>
-<li><p>在有效代码行，点击行号右边的空白区域，设置断点，程序执行到断点将停止，我们可以手动来运行程序     </p>
-<p>   <img src="img/debug1.png" alt=""></p>
-</li>
-<li><p>点击Debug运行模式       <img src="img\debug2.png" alt="">                                                                                                                                                                      </p>
-</li>
-<li><p>程序停止在断点上不再执行，而IDEA最下方打开了Debug调试窗口  </p>
-<p> <img src="img\debug3.png" alt=""><img src="img\debug4.png" alt=""></p>
-</li>
-<li><p>Debug调试窗口介绍</p>
-<p> <img src="img\debug5.png" alt=""></p>
-</li>
-<li><p>快捷键F8，代码向下执行一行,第九行执行完毕，执行到第10行（第10行还未执行）</p>
-<p><img src="img\debug6.png" alt=""></p>
-</li>
-<li><p>切换到控制台面板，控制台显示 请录入一个字符串： 并且等待键盘录入</p>
-<p><img src="img\debug7.png" alt=""></p>
-</li>
-<li><p>快捷键F8，程序继续向后执行，执行键盘录入操作，在控制台录入数据 ababcea</p>
-<p><img src="img\debug8.png" alt=""></p>
-<p>回车之后效果：<img src="img\debug9.png" alt=""></p>
-<p>调试界面效果：<img src="img\debug0.png" alt=""></p>
-</li>
-<li><p>此时到达findChar方法，快捷键F7，进入方法findChar</p>
-<p><img src="img\debug11.png" alt=""></p>
-</li>
-<li><p>快捷键F8 接续执行，创建了map对象，变量区域显示</p>
-<p><img src="img\debug12.png" alt=""></p>
-</li>
-<li><p>快捷键F8 接续执行，进入到循环中，循环变量i为 0,F8再继续执行，就获取到变量c赋值为字符‘a’ 字节值97</p>
-<p><img src="img\debug13.png" alt=""></p>
-</li>
-<li><p>快捷键F8 接续执行，进入到判断语句中，因为该字符 不在Map集合键集中，再按F8执行，进入该判断中</p>
-<p><img src="img\debug14.png" alt=""></p>
-</li>
-<li><p>快捷键F8 接续执行，循环结束，进入下次循环，此时map中已经添加一对儿元素</p>
-<p><img src="img\debug15.png" alt=""></p>
-</li>
-<li><p>快捷键F8 接续执行，进入下次循环，再继续上面的操作，我们就可以看到代码每次是如何执行的了</p>
-<p><img src="img\debug16.png" alt=""></p>
-</li>
-<li><p>如果不想继续debug,那么可以使用快捷键F9,程序正常执行到结束，程序结果在控制台显示</p>
-<p><img src="img\debug17.png" alt=""></p>
-</li>
-</ol>
 <h1 id="模拟斗地主洗牌发牌"><a href="#模拟斗地主洗牌发牌" class="headerlink" title="模拟斗地主洗牌发牌"></a>模拟斗地主洗牌发牌</h1><h2 id="案例介绍"><a href="#案例介绍" class="headerlink" title="案例介绍"></a>案例介绍</h2><p>按照斗地主的规则，完成洗牌发牌的动作。</p>
-<p><img src="img\斗地主.png" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/Gf5J6H.png" alt="Gf5J6H.png" style="zoom:80%;" /></p>
 <p>具体规则：</p>
 <ol>
 <li>组装54张扑克牌将</li>
@@ -630,14 +689,14 @@
 </ol>
 <p>通过Map集合找到对应字符展示。</p>
 <p>通过查询纸牌与数字的对应关系，由数字转成纸牌字符串再进行展示。</p>
-<p><img src="img\斗地主分析.png" alt=""></p>
-<h2 id="实现代码步骤"><a href="#实现代码步骤" class="headerlink" title="实现代码步骤"></a>实现代码步骤</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poker</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 1组装54张扑克牌</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">// 1.1 创建Map集合存储</span></span><br><span class="line">        HashMap&lt;Integer, String&gt; pokerMap = <span class="keyword">new</span> HashMap&lt;Integer, String&gt;();</span><br><span class="line">        <span class="comment">// 1.2 创建 花色集合 与 数字集合</span></span><br><span class="line">        ArrayList&lt;String&gt; colors = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; numbers = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1.3 存储 花色 与数字</span></span><br><span class="line">        Collections.addAll(colors, <span class="string">"♦"</span>, <span class="string">"♣"</span>, <span class="string">"♥"</span>, <span class="string">"♠"</span>);</span><br><span class="line">        Collections.addAll(numbers, <span class="string">"2"</span>, <span class="string">"A"</span>, <span class="string">"K"</span>, <span class="string">"Q"</span>, <span class="string">"J"</span>, <span class="string">"10"</span>, <span class="string">"9"</span>, <span class="string">"8"</span>, <span class="string">"7"</span>, <span class="string">"6"</span>, <span class="string">"5"</span>, <span class="string">"4"</span>, <span class="string">"3"</span>);</span><br><span class="line">        <span class="comment">// 设置 存储编号变量</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        pokerMap.put(count++, <span class="string">"大王"</span>);</span><br><span class="line">        pokerMap.put(count++, <span class="string">"小王"</span>);</span><br><span class="line">        <span class="comment">// 1.4 创建牌 存储到map集合中</span></span><br><span class="line">        <span class="keyword">for</span> (String number : numbers) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String color : colors) &#123;</span><br><span class="line">                String card = color + number;</span><br><span class="line">                pokerMap.put(count++, card);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 2 将54张牌顺序打乱</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">// 取出编号 集合</span></span><br><span class="line">        Set&lt;Integer&gt; numberSet = pokerMap.keySet();</span><br><span class="line">        <span class="comment">// 因为要将编号打乱顺序 所以 应该先进行转换到 list集合中</span></span><br><span class="line">        ArrayList&lt;Integer&gt; numberList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        numberList.addAll(numberSet);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 打乱顺序</span></span><br><span class="line">        Collections.shuffle(numberList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3 完成三个玩家交替摸牌，每人17张牌，最后三张留作底牌</span></span><br><span class="line">        <span class="comment">// 3.1 发牌的编号</span></span><br><span class="line">        <span class="comment">// 创建三个玩家编号集合 和一个 底牌编号集合</span></span><br><span class="line">        ArrayList&lt;Integer&gt; noP1 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; noP2 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; noP3 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; dipaiNo = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.2发牌的编号</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numberList.size(); i++) &#123;</span><br><span class="line">            <span class="comment">// 获取该编号</span></span><br><span class="line">            Integer no = numberList.get(i);</span><br><span class="line">            <span class="comment">// 发牌</span></span><br><span class="line">            <span class="comment">// 留出底牌</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= <span class="number">51</span>) &#123;</span><br><span class="line">                dipaiNo.add(no);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    noP1.add(no);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                    noP2.add(no);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    noP3.add(no);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4 查看三人各自手中的牌（按照牌的大小排序）、底牌</span></span><br><span class="line">        <span class="comment">// 4.1 对手中编号进行排序</span></span><br><span class="line">        Collections.sort(noP1);</span><br><span class="line">        Collections.sort(noP2);</span><br><span class="line">        Collections.sort(noP3);</span><br><span class="line">        Collections.sort(dipaiNo);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.2 进行牌面的转换</span></span><br><span class="line">        <span class="comment">// 创建三个玩家牌面集合 以及底牌牌面集合</span></span><br><span class="line">        ArrayList&lt;String&gt; player1 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; player2 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; player3 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; dipai = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.3转换</span></span><br><span class="line">        <span class="keyword">for</span> (Integer i : noP1) &#123;</span><br><span class="line">            <span class="comment">// 4.4 根据编号找到 牌面 pokerMap</span></span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            <span class="comment">// 添加到对应的 牌面集合中</span></span><br><span class="line">            player1.add(card);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Integer i : noP2) &#123;</span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            player2.add(card);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : noP3) &#123;</span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            player3.add(card);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : dipaiNo) &#123;</span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            dipai.add(card);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.5 查看</span></span><br><span class="line">        System.out.println(<span class="string">"令狐冲："</span>+player1);</span><br><span class="line">        System.out.println(<span class="string">"石破天："</span>+player2);</span><br><span class="line">        System.out.println(<span class="string">"鸠摩智："</span>+player3);</span><br><span class="line">        System.out.println(<span class="string">"底牌："</span>+dipai);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://s1.ax1x.com/2020/04/08/Gf5XAx.png" alt="Gf5XAx.png" style="zoom:80%;" /></p>
+<h2 id="实现代码步骤"><a href="#实现代码步骤" class="headerlink" title="实现代码步骤"></a>实现代码步骤</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Poker</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 1组装54张扑克牌</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">// 1.1 创建Map集合存储</span></span><br><span class="line">        HashMap&lt;Integer, String&gt; pokerMap = <span class="keyword">new</span> HashMap&lt;Integer, String&gt;();</span><br><span class="line">        <span class="comment">// 1.2 创建 花色集合 与 数字集合</span></span><br><span class="line">        ArrayList&lt;String&gt; colors = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; numbers = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1.3 存储 花色 与数字</span></span><br><span class="line">        Collections.addAll(colors, <span class="string">"♦"</span>, <span class="string">"♣"</span>, <span class="string">"♥"</span>, <span class="string">"♠"</span>);</span><br><span class="line">        Collections.addAll(numbers, <span class="string">"2"</span>, <span class="string">"A"</span>, <span class="string">"K"</span>, <span class="string">"Q"</span>, <span class="string">"J"</span>, <span class="string">"10"</span>, <span class="string">"9"</span>, <span class="string">"8"</span>, <span class="string">"7"</span>, <span class="string">"6"</span>, <span class="string">"5"</span>, <span class="string">"4"</span>, <span class="string">"3"</span>);</span><br><span class="line">        <span class="comment">// 设置 存储编号变量</span></span><br><span class="line">        <span class="keyword">int</span> count = <span class="number">1</span>;</span><br><span class="line">        pokerMap.put(count++, <span class="string">"大王"</span>);</span><br><span class="line">        pokerMap.put(count++, <span class="string">"小王"</span>);</span><br><span class="line">        <span class="comment">// 1.4 创建牌 存储到map集合中</span></span><br><span class="line">        <span class="keyword">for</span> (String number : numbers) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String color : colors) &#123;</span><br><span class="line">                String card = color + number;</span><br><span class="line">                pokerMap.put(count++, card);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">         * 2 将54张牌顺序打乱</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        <span class="comment">// 取出编号 集合</span></span><br><span class="line">        Set&lt;Integer&gt; numberSet = pokerMap.keySet();</span><br><span class="line">        <span class="comment">// 因为要将编号打乱顺序 所以 应该先进行转换到 list集合中</span></span><br><span class="line">        ArrayList&lt;Integer&gt; numberList = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        numberList.addAll(numberSet);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 打乱顺序</span></span><br><span class="line">        Collections.shuffle(numberList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3 完成三个玩家交替摸牌，每人17张牌，最后三张留作底牌</span></span><br><span class="line">        <span class="comment">// 3.1 发牌的编号</span></span><br><span class="line">        <span class="comment">// 创建三个玩家编号集合 和一个 底牌编号集合</span></span><br><span class="line">        ArrayList&lt;Integer&gt; noP1 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; noP2 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; noP3 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">        ArrayList&lt;Integer&gt; dipaiNo = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3.2发牌的编号</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numberList.size(); i++) &#123;</span><br><span class="line">            <span class="comment">// 获取该编号</span></span><br><span class="line">            Integer no = numberList.get(i);</span><br><span class="line">            <span class="comment">// 发牌</span></span><br><span class="line">            <span class="comment">// 留出底牌</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= <span class="number">51</span>) &#123;</span><br><span class="line">                dipaiNo.add(no);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                    noP1.add(no);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i % <span class="number">3</span> == <span class="number">1</span>) &#123;</span><br><span class="line">                    noP2.add(no);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    noP3.add(no);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4 查看三人各自手中的牌（按照牌的大小排序）、底牌</span></span><br><span class="line">        <span class="comment">// 4.1 对手中编号进行排序</span></span><br><span class="line">        Collections.sort(noP1);</span><br><span class="line">        Collections.sort(noP2);</span><br><span class="line">        Collections.sort(noP3);</span><br><span class="line">        Collections.sort(dipaiNo);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.2 进行牌面的转换</span></span><br><span class="line">        <span class="comment">// 创建三个玩家牌面集合 以及底牌牌面集合</span></span><br><span class="line">        ArrayList&lt;String&gt; player1 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; player2 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; player3 = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        ArrayList&lt;String&gt; dipai = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.3转换</span></span><br><span class="line">        <span class="keyword">for</span> (Integer i : noP1) &#123;</span><br><span class="line">            <span class="comment">// 4.4 根据编号找到 牌面 pokerMap</span></span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            <span class="comment">// 添加到对应的 牌面集合中</span></span><br><span class="line">            player1.add(card);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Integer i : noP2) &#123;</span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            player2.add(card);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : noP3) &#123;</span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            player3.add(card);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Integer i : dipaiNo) &#123;</span><br><span class="line">            String card = pokerMap.get(i);</span><br><span class="line">            dipai.add(card);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//4.5 查看</span></span><br><span class="line">        System.out.println(<span class="string">"周润发："</span>+player1);</span><br><span class="line">        System.out.println(<span class="string">"刘德华："</span>+player2);</span><br><span class="line">        System.out.println(<span class="string">"周星驰："</span>+player3);</span><br><span class="line">        System.out.println(<span class="string">"底  牌："</span>+dipai);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
   </entry>
   <entry>
     <title>Collection、泛型</title>
     <url>/posts/a69633d1.html</url>
-    <content><![CDATA[<h1 id="Collection集合"><a href="#Collection集合" class="headerlink" title="Collection集合"></a>Collection集合</h1><h2 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h2><p>在前面基础班我们已经学习过并使用过集合ArrayList<E> ,那么集合到底是什么呢?</p>
+    <content><![CDATA[<h1 id="Collection集合"><a href="#Collection集合" class="headerlink" title="Collection集合"></a>Collection集合</h1><h2 id="集合概述"><a href="#集合概述" class="headerlink" title="集合概述"></a>集合概述</h2><p>我们已经学习过并使用过集合ArrayList<E> ,那么集合到底是什么呢?</p>
 <ul>
 <li><strong>集合</strong>：集合是java中提供的一种容器，可以用来存储多个数据。</li>
 </ul>
@@ -647,13 +706,13 @@
 <li>数组中存储的是同一类型的元素，可以存储基本数据类型值。集合存储的都是对象。而且对象的类型可以不一致。在开发中一般当对象多的时候，使用集合进行存储。</li>
 </ul>
 <h2 id="集合框架"><a href="#集合框架" class="headerlink" title="集合框架"></a>集合框架</h2><p>JAVASE提供了满足各种需求的API，在使用这些API前，先了解其继承与接口操作架构，才能了解何时采用哪个类，以及类之间如何彼此合作，从而达到灵活应用。</p>
-<p>集合按照其存储结构可以分为两大类，分别是单列集合<code>java.util.Collection</code>和双列集合<code>java.util.Map</code>，今天我们主要学习<code>Collection</code>集合，在day04时讲解<code>Map</code>集合。</p>
+<p>集合按照其存储结构可以分为两大类，分别是单列集合<code>java.util.Collection</code>和双列集合<code>java.util.Map</code>。</p>
 <ul>
 <li><strong>Collection</strong>：单列集合类的根接口，用于存储一系列符合某种规则的元素，它有两个重要的子接口，分别是<code>java.util.List</code>和<code>java.util.Set</code>。其中，<code>List</code>的特点是元素有序、元素可重复。<code>Set</code>的特点是元素无序，而且不可重复。<code>List</code>接口的主要实现类有<code>java.util.ArrayList</code>和<code>java.util.LinkedList</code>，<code>Set</code>接口的主要实现类有<code>java.util.HashSet</code>和<code>java.util.TreeSet</code>。</li>
 </ul>
 <p>从上面的描述可以看出JDK中提供了丰富的集合类库，为了便于初学者进行系统地学习，接下来通过一张图来描述整个集合类的继承体系。</p>
-<p><img src="img\Collection集合体系图.png" alt=""></p>
-<p>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。这几天将针对图中所列举的集合类进行逐一地讲解。</p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GWvxFH.png" alt="GWvxFH.png" style="zoom:80%;" /></p>
+<p>其中，橙色框里填写的都是接口类型，而蓝色框里填写的都是具体的实现类。</p>
 <p>集合本身是一个工具，它存放在java.util包中。在<code>Collection</code>接口定义着单列集合框架中最最共性的内容。</p>
 <h2 id="Collection-常用功能"><a href="#Collection-常用功能" class="headerlink" title="Collection 常用功能"></a>Collection 常用功能</h2><p>Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：</p>
 <ul>
@@ -691,7 +750,7 @@
 </blockquote>
 <h2 id="迭代器的实现原理"><a href="#迭代器的实现原理" class="headerlink" title="迭代器的实现原理"></a>迭代器的实现原理</h2><p>我们在之前案例已经完成了Iterator遍历集合的整个过程。当遍历集合时，首先通过调用t集合的iterator()方法获得迭代器对象，然后使用hashNext()方法判断集合中是否存在下一个元素，如果存在，则调用next()方法将元素取出，否则说明已到达了集合末尾，停止遍历元素。</p>
 <p>Iterator迭代器对象在遍历集合时，内部采用指针的方式来跟踪集合中的元素，为了让初学者能更好地理解迭代器的工作原理，接下来通过一个图例来演示Iterator对象迭代元素的过程：</p>
-<p><img src="img\迭代器原理图.bmp" alt=""></p>
+<p><img src="https://s1.ax1x.com/2020/04/08/GfKeNd.png" alt="GfKeNd.png" style="zoom:80%;" /></p>
 <p>在调用Iterator的next方法之前，迭代器的索引位于第一个元素之前，不指向任何元素，当第一次调用迭代器的next方法后，迭代器的索引会向后移动一位，指向第一个元素并将该元素返回，当再次调用next方法时，迭代器的索引会指向第二个元素并将该元素返回，依此类推，直到hasNext方法返回false，表示到达了集合的末尾，终止对元素的遍历。</p>
 <h2 id="增强for"><a href="#增强for" class="headerlink" title="增强for"></a>增强for</h2><p>增强for循环(也称for each循环)是<strong>JDK1.5</strong>以后出来的一个高级for循环，专门用来遍历数组和集合的。它的内部原理其实是个Iterator迭代器，所以在遍历的过程中，不能对集合中的元素进行增删操作。</p>
 <p>格式：</p>
@@ -702,7 +761,7 @@
 <blockquote>
 <p>tips: 新for循环必须有被遍历的目标。目标只能是Collection或者是数组。新式for仅仅作为遍历操作出现。</p>
 </blockquote>
-<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="泛型概述"><a href="#泛型概述" class="headerlink" title="泛型概述"></a>泛型概述</h2><p>在前面学习集合时，我们都知道集合中是可以存放任意对象的，只要把对象存储集合后，那么这时他们都会被提升成Object类型。当我们在取出每一个对象，并且进行相应的操作，这时必须采用类型转换。</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><h2 id="泛型概述"><a href="#泛型概述" class="headerlink" title="泛型概述"></a>泛型概述</h2><p>在学习集合时，我们都知道集合中是可以存放任意对象的，只要把对象存储集合后，那么这时他们都会被提升成Object类型。当我们在取出每一个对象，并且进行相应的操作，这时必须采用类型转换。</p>
 <p>大家观察下面代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GenericDemo</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Collection coll = <span class="keyword">new</span> ArrayList();</span><br><span class="line">		coll.add(<span class="string">"abc"</span>);</span><br><span class="line">		coll.add(<span class="string">"itcast"</span>);</span><br><span class="line">		coll.add(<span class="number">5</span>);<span class="comment">//由于集合没有做任何限定，任何类型都可以给其中存放</span></span><br><span class="line">		Iterator it = coll.iterator();</span><br><span class="line">		<span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">			<span class="comment">//需要打印每个字符串的长度,就要把迭代出来的对象转成String类型</span></span><br><span class="line">			String str = (String) it.next();</span><br><span class="line">			System.out.println(str.length());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>程序在运行时发生了问题<strong>java.lang.ClassCastException</strong>。                                                                                             为什么会发生类型转换异常呢？                                                                                                                                       我们来分析下：由于集合中什么类型的元素都可以存储。导致取出时强转引发运行时 ClassCastException。                                                                                                                                                       怎么来解决这个问题呢？                                                                                                                                                           Collection虽然可以存储各种对象，但实际上通常Collection只存储同一类型对象。例如都是存储字符串对象。因此在JDK5之后，新增了<strong>泛型</strong>(<strong>Generic</strong>)语法，让你在设计API时可以指定类或方法支持泛型，这样我们使用API的时候也变得更为简洁，并得到了编译时期的语法检查。</p>
